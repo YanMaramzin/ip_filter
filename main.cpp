@@ -61,19 +61,6 @@ std::vector<std::string> filter(const std::string &value, std::vector<std::strin
 
 int main()
 {
-    std::vector<std::string> tmp {
-        "113.162.145.156	111	0",
-        "157.39.22.224	5	6",
-        "79.180.73.190	2	1",
-        "179.210.145.4	22	0"
-    };
-// 219.102.120.135	486	0
-// 67.232.81.208	1	0
-// 85.254.10.197	0	7
-// 23.240.215.189	6	0
-// 1.29.168.152	17	0
-// 185.69.186.168	1	3}
-
     std::vector<std::string> ip_pool;
     for(std::string line; std::getline(std::cin, line);)
     {
@@ -102,7 +89,7 @@ int main()
     std::cout << std::endl;
     printIp(filter("^46\\.70\\..*", ip_pool));
     std::cout << std::endl;
-    printIp(filter(".*46.*", ip_pool));
+    printIp(filter("(^|\\.)46($|\\.)", ip_pool));
 
     return 0;
 }
