@@ -84,6 +84,7 @@ int main()
         return false;
     });
 
+    std::cout << "test";
     printIp(ips);
     std::cout << std::endl;
     printIp(filter("^46\\..*", ips));
