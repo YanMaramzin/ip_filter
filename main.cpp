@@ -61,21 +61,27 @@ std::vector<std::string> filter(const std::string &value, std::vector<std::strin
 
 int main()
 {
-    std::vector<std::vector<std::string>> ip_pool;
+    std::vector<std::string> tmp {
+        "113.162.145.156	111	0",
+        "157.39.22.224	5	6",
+        "79.180.73.190	2	1",
+        "179.210.145.4	22	0"
+    };
+// 219.102.120.135	486	0
+// 67.232.81.208	1	0
+// 85.254.10.197	0	7
+// 23.240.215.189	6	0
+// 1.29.168.152	17	0
+// 185.69.186.168	1	3}
+
+    std::vector<std::string> ip_pool;
     for(std::string line; std::getline(std::cin, line);)
     {
-        std::vector<std::string> v = split(line, "\t");
-        ip_pool.push_back(split(v.at(0), "."));
+        auto v = split(line, "\t");
+        ip_pool.push_back(v.at(0));
     }
 
-    for (const auto &ip : ip_pool) {
-        for (const auto &i : ip)
-            std::cout << i << std::endl;
-    }
-
-    std::vector<std::string> ips = {{"1.1.1.1"}, {"46.2.1.1"}, {"1.10.1.1"}, {"1.46.1.1"}};
-
-    std::sort(ips.begin(), ips.end(), [](const std::string &s1, const std::string &s2) {
+    std::sort(ip_pool.begin(), ip_pool.end(), [](const std::string &s1, const std::string &s2) {
         const auto tmp1 = split(s1, ".");
         const auto tmp2 = split(s2, ".");
 
@@ -90,11 +96,13 @@ int main()
         return false;
     });
 
-    printIp(ips);
+    printIp(ip_pool);
     std::cout << std::endl;
-    printIp(filter("^46\\..*", ips));
+    printIp(filter("^1\\..*", ip_pool));
     std::cout << std::endl;
-    printIp(filter(".*46.*", ips));
+    printIp(filter("^46\\.70\\..*", ip_pool));
+    std::cout << std::endl;
+    printIp(filter(".*46.*", ip_pool));
 
     return 0;
 }
