@@ -54,7 +54,7 @@ std::vector<std::string> filter(const std::string &value, std::vector<std::strin
     std::copy_if(ptr.begin(), ptr.end(),
                  std::back_inserter(result),
                  [ipRegex](const std::string &x) {
-                    return std::regex_match(x, ipRegex);
+                    return std::regex_search(x, ipRegex);
                  });
     return result;
 }
@@ -89,7 +89,7 @@ int main()
     std::cout << std::endl;
     printIp(filter("^46\\.70\\..*", ip_pool));
     std::cout << std::endl;
-    printIp(filter("(^|\\.)46($|\\.)", ip_pool));
+    printIp(filter("\\b46\\b", ip_pool));
 
     return 0;
 }
