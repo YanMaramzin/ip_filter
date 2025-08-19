@@ -84,11 +84,8 @@ int main()
     });
 
     printIp(ip_pool);
-    std::cout << std::endl;
     printIp(filter("^1\\..*", ip_pool));
-    std::cout << std::endl;
     printIp(filter("^46\\.70\\..*", ip_pool));
-    std::cout << std::endl;
     printIp(filter("\\b46\\b", ip_pool));
 
     return 0;
