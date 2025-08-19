@@ -61,12 +61,13 @@ std::vector<std::string> filter(const std::string &value, std::vector<std::strin
 
 int main()
 {
-    // std::vector<std::vector<std::string> > ip_pool;
-    // for(std::string line; std::getline(std::cin, line);)
-    // {
-    //     std::vector<std::string> v = split(line, "\t");
-    //     ip_pool.push_back(split(v.at(0), "."));
-    // }
+    std::vector<std::vector<std::string> > ip_pool;
+    for(std::string line; std::getline(std::cin, line);)
+    {
+        std::vector<std::string> v = split(line, "\t");
+        ip_pool.push_back(split(v.at(0), "."));
+    }
+
     std::vector<std::string> ips = {{"1.1.1.1"}, {"46.2.1.1"}, {"1.10.1.1"}, {"1.46.1.1"}};
 
     std::sort(ips.begin(), ips.end(), [](const std::string &s1, const std::string &s2) {
